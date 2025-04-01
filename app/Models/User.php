@@ -2,47 +2,64 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;  // Importa la clase Hash
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
+    // Cambiar el nombre de la tabla
+    protected $table = 'usuarios';
+
+    // Definir la clave primaria
+   // protected $primaryKey = 'CODIGO_USUARIO';
+
+    // Indicar que no usas timestamps si no tienes `created_at` y `updated_at`
+    public $timestamps = false;
+        /**
+     * Indicar que la clave primaria no es de tipo autoincrementable BigInteger.
+     */
+    public $incrementing = true;
+    protected $keyType = 'int';
+
     /**
-     * The attributes that are mass assignable.
+     * Los atributos que pueden ser asignados masivamente.
      *
-     * @var list<string>
+     * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'NOMBRE',
+        'APELLIDO',
+        'email',  // Cambiado de CORREO a email
+        'password',  // Cambiado de CONTRASENIA a password
+        'TELEFONO',       
+        'TELEFONO',
+        'FECHA_CREACION',
+       
+        'FECHA_NACIMIENTO',
+        'CODIGO_ESTADO',
+        'CODIGO_GENERO',
+        'CODIGO_ROL',
+        'CODIGO_DIRECCION',
     ];
-
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
-     */
+    
     protected $hidden = [
-        'password',
+        'password',  // Laravel usa 'password' por defecto
         'remember_token',
     ];
-
+    
     /**
-     * Get the attributes that should be cast.
+     * Definir los atributos con conversiones de datos.
      *
      * @return array<string, string>
      */
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+    ];
+    
+    
 }

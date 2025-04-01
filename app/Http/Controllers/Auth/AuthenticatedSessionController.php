@@ -25,11 +25,27 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
-
         $request->session()->regenerate();
+       
+      
+        // Obtén el usuario autenticado
+        $user = Auth::user();       
+    
+    
+        \Log::info('User authenticated and session regenerated', ['user_id' => $user]);
 
-        return redirect()->intended(route('dashboard', absolute: false));
+          // Verifica si el usuario está autenticado después de regenerar la sesión
+    if (!Auth::check()) {
+        \Log::error('La autenticación falló después de regenerar la sesión.');
+        return redirect()->route('login')->withErrors(['error' => 'No se pudo autenticar al usuario.']);
     }
+
+    
+        // Redirige al dashboard
+        return redirect()->intended(route('dashboard', absolute: false));
+        
+    }
+    
 
     /**
      * Destroy an authenticated session.

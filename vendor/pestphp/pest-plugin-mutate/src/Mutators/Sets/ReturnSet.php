@@ -6,8 +6,8 @@ namespace Pest\Mutate\Mutators\Sets;
 
 use Pest\Mutate\Contracts\MutatorSet;
 use Pest\Mutate\Mutators\Concerns\HasName;
-use Pest\Mutate\Mutators\Return\AlwaysReturnEmptyArray;
-use Pest\Mutate\Mutators\Return\AlwaysReturnNull;
+use Pest\Mutate\Mutators\ReturnValues\AlwaysReturnEmptyArray;
+use Pest\Mutate\Mutators\ReturnValues\AlwaysReturnNull;
 
 class ReturnSet implements MutatorSet
 {

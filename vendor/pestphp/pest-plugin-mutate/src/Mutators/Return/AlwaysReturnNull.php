@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Pest\Mutate\Mutators\Return;
+namespace Pest\Mutate\Mutators\ReturnType;
 
 use Pest\Mutate\Mutators\Abstract\AbstractMutator;
 use PhpParser\Node;

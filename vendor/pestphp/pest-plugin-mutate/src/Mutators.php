@@ -129,8 +129,8 @@ use Pest\Mutate\Mutators\Removal\RemoveEarlyReturn;
 use Pest\Mutate\Mutators\Removal\RemoveFunctionCall;
 use Pest\Mutate\Mutators\Removal\RemoveMethodCall;
 use Pest\Mutate\Mutators\Removal\RemoveNullSafeOperator;
-use Pest\Mutate\Mutators\Return\AlwaysReturnEmptyArray;
-use Pest\Mutate\Mutators\Return\AlwaysReturnNull;
+use Pest\Mutate\Mutators\ReturnMutators\AlwaysReturnEmptyArray;
+use Pest\Mutate\Mutators\ReturnMutators\AlwaysReturnNull;
 use Pest\Mutate\Mutators\Sets\ArithmeticSet;
 use Pest\Mutate\Mutators\Sets\ArraySet;
 use Pest\Mutate\Mutators\Sets\AssignmentSet;
@@ -485,9 +485,9 @@ class Mutators
     final public const REMOVAL_REMOVE_NULL_SAFE_OPERATOR = RemoveNullSafeOperator::class;
 
     /** Return */
-    final public const RETURN_ALWAYS_RETURN_EMPTY_ARRAY = AlwaysReturnEmptyArray::class;
-
-    final public const RETURN_ALWAYS_RETURN_NULL = AlwaysReturnNull::class;
+    final public const RETURN_ALWAYS_RETURN_EMPTY_ARRAY = \Pest\Mutate\Mutators\ReturnMutators\AlwaysReturnEmptyArray::class;
+    
+    final public const RETURN_ALWAYS_RETURN_NULL = \Pest\Mutate\Mutators\ReturnMutators\AlwaysReturnNull::class;
 
     /** String */
     final public const STRING_CONCAT_REMOVE_LEFT = ConcatRemoveLeft::class;
